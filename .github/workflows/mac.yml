@@ -34,7 +34,7 @@ jobs:
         id: cache-contrib
         with:
           path: ${{runner.workspace}}/nunchuk-qt/contrib/libnunchuk/contrib/bitcoin
-          key: mac-a0988140b71485ad12c3c3a4a9573f7c21b1eff8-1
+          key: mac-a0988140b71485ad12c3c3a4a9573f7c21b1eff8-2
 
       - name: Build Bitcoin Core
         if: steps.cache-contrib.outputs.cache-hit != 'true'
@@ -45,7 +45,7 @@ jobs:
           export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/qt@5/include -I/usr/local/opt/boost@1.76/include -I/usr/local/opt/berkeley-db@4/include"
           export BOOST_ROOT="/usr/local/opt/boost@1.76"
           ./autogen.sh
-          ./configure --without-gui --disable-zmq --with-miniupnpc=no --with-incompatible-bdb --disable-bench --disable-tests --with-boost-libdir="/usr/local/opt/boost@1.76/lib"
+          ./configure --enable-module-ecdh --without-gui --disable-zmq --with-miniupnpc=no --with-incompatible-bdb --disable-bench --disable-tests --with-boost-libdir="/usr/local/opt/boost@1.76/lib"
           make -j8
 
       - name: Build nunchuk-qt
