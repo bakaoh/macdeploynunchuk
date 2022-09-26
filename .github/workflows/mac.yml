@@ -27,7 +27,7 @@ jobs:
         
       - name: Install dependencies
         run: |
-          brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 qt@5 libevent sqlite sqlcipher libolm qtkeychain          
+          brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 qt@5 libevent sqlite sqlcipher libolm qtkeychain@0.13.2          
 
       - name: Cache Bitcoin Core
         uses: actions/cache@v2
