@@ -36,7 +36,7 @@ jobs:
           cd qtkeychain
           mkdir build
           cd build
-          cmake ..
+          cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt@5/lib/cmake
           cmake --build .
           cmake --install .
 
