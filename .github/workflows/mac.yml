@@ -38,7 +38,7 @@ jobs:
           cd build
           cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt@5/lib/cmake
           cmake --build .
-          cmake --install .
+          cmake --install . --prefix=/usr/local/opt
 
       - name: Cache Bitcoin Core
         uses: actions/cache@v2
