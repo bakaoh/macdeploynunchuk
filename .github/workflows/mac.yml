@@ -38,7 +38,7 @@ jobs:
           cd build
           cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt@5/lib/cmake
           cmake --build .
-          sudo cmake --install . --prefix "/usr/local/opt"
+          sudo cmake --install . --prefix "/usr/local"
 
       - name: Cache Bitcoin Core
         uses: actions/cache@v2
@@ -71,7 +71,7 @@ jobs:
           cp /usr/local/lib/libsqlcipher.a ${{runner.workspace}}/nunchuk-qt/contrib/libnunchuk/contrib/sqlcipher/.libs/libsqlcipher.a
           cmake -E make_directory ${{runner.workspace}}/build
           cd build
-          cmake ${{runner.workspace}}/nunchuk-qt -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl -DCMAKE_PREFIX_PATH=/usr/local/opt/qt@5/lib/cmake;/usr/local/opt/lib/cmake -DUR__DISABLE_TESTS=ON -DBOOST_ROOT=/usr/local/opt/boost@1.76
+          cmake ${{runner.workspace}}/nunchuk-qt -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl -DCMAKE_PREFIX_PATH=/usr/local/opt/qt@5/lib/cmake -DUR__DISABLE_TESTS=ON -DBOOST_ROOT=/usr/local/opt/boost@1.76
           cmake --build . --config Release -j8
           
       - name: Deploy Dmg
