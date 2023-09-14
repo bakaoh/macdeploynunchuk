@@ -21,9 +21,11 @@ jobs:
           cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
           git stash
           git checkout 8264919fc5b75b989d8371f15508022f15921aaf
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install qt@5.rb
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install glib.rb
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 libevent sqlite sqlcipher libolm          
+          export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+          export HOMEBREW_NO_AUTO_UPDATE=1
+          brew install qt@5.rb
+          brew install glib.rb
+          brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 libevent sqlite sqlcipher libolm          
 
       - name: Checkout nunchuk-qt
         working-directory: ${{runner.workspace}}
