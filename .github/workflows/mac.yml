@@ -83,8 +83,11 @@ jobs:
           export BOOST_ROOT="/usr/local/opt/boost@1.76"
           mv nunchuk-qt.app/Contents/MacOS/nunchuk-qt nunchuk-qt.app/Contents/MacOS/Nunchuk
           mv nunchuk-qt.app Nunchuk.app
-          macdeployqt Nunchuk.app -verbose=3 -libpath=/usr/local/opt -qmldir=${{runner.workspace}}/nunchuk-qt -dmg
-   
+          macdeployqt Nunchuk.app -verbose=3 -qmldir=${{runner.workspace}}/nunchuk-qt
+          rm -rf Nunchuk.app/Contents/Frameworks
+          mv Frameworks Nunchuk.app/Contents
+          macdeployqt Nunchuk.app -dmg
+
       - name: Upload Artifact
         uses: 'actions/upload-artifact@v2'
         with:
