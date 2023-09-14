@@ -17,10 +17,9 @@ jobs:
         
       - name: Install dependencies
         run: |
-          cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
+          cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
           git stash
-          git checkout 326d221467b0d98a586004f8c3c622e5e1544018
-          cd Formula
+          git checkout 8264919fc5b75b989d8371f15508022f15921aaf
           HOMEBREW_NO_AUTO_UPDATE=1 brew install qt@5.rb
           HOMEBREW_NO_AUTO_UPDATE=1 brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 libevent sqlite sqlcipher libolm          
 
