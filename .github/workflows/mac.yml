@@ -17,8 +17,7 @@ jobs:
         
       - name: Install dependencies
         run: |
-          cd $( brew --prefix )
-          pwd
+          cd /usr/local/Homebrew
           ls
           git checkout c64da2d Library/Formula/q/qt@5.rb
           brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 qt@5 libevent sqlite sqlcipher libolm          
