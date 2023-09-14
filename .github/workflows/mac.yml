@@ -14,7 +14,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
- 
+        
+      - name: Install dependencies
+        run: |
+          cd $( brew --prefix )
+          pwd
+          ls
+          git checkout c64da2d Library/Formula/q/qt@5.rb
+          brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 qt@5 libevent sqlite sqlcipher libolm          
+
       - name: Checkout nunchuk-qt
         working-directory: ${{runner.workspace}}
         env:
@@ -24,12 +32,6 @@ jobs:
           git clone -b online https://gitlab.com/nunchuck/nunchuck-qt nunchuk-qt --depth 1
           cd nunchuk-qt
           git submodule update --init --recursive
-        
-      - name: Install dependencies
-        run: |
-          cd $( brew --prefix )
-          git checkout c64da2d Library/Formula/q/qt@5.rb
-          brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 qt@5 libevent sqlite sqlcipher libolm          
 
       - name: Install qtkeychain
         working-directory: ${{runner.workspace}}
