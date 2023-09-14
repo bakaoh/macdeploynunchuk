@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
-          git checkout 6663943670b0d20f87ff061e4ac2eef152672e26
+          git checkout fc1f8f9265d0328dd3d13b45ac9280e5c5b4c610
           HOMEBREW_NO_AUTO_UPDATE=1 brew install automake libtool pkg-config berkeley-db@4 openssl@1.1 boost@1.76 qt@5 libevent sqlite sqlcipher libolm          
 
       - name: Checkout nunchuk-qt
