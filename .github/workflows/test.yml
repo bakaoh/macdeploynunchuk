@@ -1,0 +1,36 @@
+name: test
+
+on:
+  push:
+    tags:
+    - '*'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-11
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+    
+      - name: Build HWI
+        working-directory: ${{runner.workspace}}
+        shell: bash
+        run: |
+          brew install libusb python@3.10
+          export PATH="$(brew --prefix python@3.10)/bin:PATH"
+          wget -c -q "https://github.com/bitcoin-core/HWI/archive/refs/tags/2.2.1.zip" -O - | tar -xz
+          python3 --version
+          cd HWI-2.2.1
+          pip3 install poetry
+          python3 --version
+          poetry install
+          python3 --version
+          pip3 install .
+          pip3 install -U setuptools
+          python3 --version
+          bash contrib/build_bin.sh --without-gui
+          echo "find hwi"
+          find ${{runner.workspace}} -name "hwi-2.2.1-mac-amd64.tar.gz"
