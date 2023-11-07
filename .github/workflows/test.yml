@@ -19,7 +19,9 @@ jobs:
         working-directory: ${{runner.workspace}}
         shell: bash
         run: |
-          brew install libusb python@3.10 wget
+          brew install libusb pyenv
+          pyenv install 3.9.7
+          pyenv shell 3.9.7
           wget -c -q "https://github.com/bitcoin-core/HWI/archive/refs/tags/2.2.1.zip" -O - | tar -xz
           python3 --version
           cd HWI-2.2.1
