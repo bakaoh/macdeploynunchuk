@@ -20,7 +20,6 @@ jobs:
         shell: bash
         run: |
           brew install libusb python@3.10 wget
-          export PATH="$(brew --prefix python@3.10)/bin:PATH"
           wget -c -q "https://github.com/bitcoin-core/HWI/archive/refs/tags/2.2.1.zip" -O - | tar -xz
           python3 --version
           cd HWI-2.2.1
