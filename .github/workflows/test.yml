@@ -20,8 +20,11 @@ jobs:
         shell: bash
         run: |
           brew install libusb pyenv pyenv-virtualenv
-          pyenv install 3.11.5
-          pyenv global 3.11.5
+          pyenv install 3.9.7
+          pyenv global 3.9.7
+          pyenv init -
+          pyenv init --path
+          eval "$(pyenv init -)"
           eval "$(pyenv init --path)"
           wget -c -q "https://github.com/bitcoin-core/HWI/archive/refs/tags/2.2.1.zip" -O - | tar -xz
           python3 --version
