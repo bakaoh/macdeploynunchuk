@@ -126,9 +126,9 @@ jobs:
           cmake --build . --config Release -j$CORES
           
       - name: Deploy Nunchuk
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{ github.workspace }}/build
         env:
-          APP_PATH: "${{runner.workspace}}/build/Nunchuk.app"
+          APP_PATH: "${{ github.workspace }}/build/Nunchuk.app"
         run: |
           set -e
           source ~/.bashrc
@@ -137,16 +137,16 @@ jobs:
           export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/qt@5/include -I$HOME/boost-1.81.0/include -I/usr/local/opt/berkeley-db@4/include -I$OPENSSL_ROOT_DIR/include"
           export BOOST_ROOT="$HOME/boost-1.81.0"
           
-          find ${{runner.workspace}} -name "Nunchuk.app"
+          find ${{ github.workspace }} -name "Nunchuk.app"
           macdeployqt $APP_PATH \
                       -executable=$APP_PATH/Contents/MacOS/Nunchuk \
-                      -qmldir=${{runner.workspace}}/nunchuk-qt \
+                      -qmldir=${{ github.workspace }}/nunchuk-desktop \
                       -always-overwrite
 
       - name: Patch QtWebEngineProcess dependencies
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{ github.workspace }}/build
         env:
-          APP_PATH: "${{runner.workspace}}/build/Nunchuk.app"
+          APP_PATH: "${{ github.workspace }}/build/Nunchuk.app"
         run: |
           HELPER_PATH="$APP_PATH/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app"
           HELPER_EXEC="$HELPER_PATH/Contents/MacOS/QtWebEngineProcess"
