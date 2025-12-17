@@ -21,10 +21,8 @@ jobs:
         working-directory: ${{ github.workspace }}/nunchuk-desktop/contrib/libnunchuk
         run: |
           git fetch --all --tags --force
-          git status
-          git branch
-          git remote -v
-          git checkout origin/updatecore
+          git branch -v -a
+          git switch -c updatecore origin/updatecore
           git submodule update --init --recursive
           git status
 
