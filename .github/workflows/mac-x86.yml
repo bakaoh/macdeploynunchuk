@@ -20,7 +20,12 @@ jobs:
       - name: Checkout new libnunchuk
         working-directory: ${{ github.workspace }}/nunchuk-desktop/contrib/libnunchuk
         run: |
-          git checkout updatecore
+          git fetch --all --tags --force
+          git status
+          git branch
+          git remote -v
+          git checkout origin/updatecore
+          git submodule update --init --recursive
           git status
 
       - name: Set compiler
