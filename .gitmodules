@@ -1,0 +1,3 @@
+[submodule "nunchuk-desktop"]
+	path = nunchuk-desktop
+	url = https://github.com/nunchuk-io/nunchuk-desktop
